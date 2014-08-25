@@ -1,1 +1,33 @@
-Igos: {{igos}}
+<div ng-controller="IgoCtrl">
+	<h3>Meetups</h3>
+	<h3>
+		<a class="btn btn-default" href="#/coursenew" role="button">Add </a>
+	</h3>
+	<p/>
+	<div class="table-responsive">
+		<table class="table table-hover table-bordered">
+		  <thead>
+		    <tr class="trHeader">
+		      <th>User </th>
+		      <th>Place </th>
+		      <th>Date </th>
+		      <th> </th><!--view -->
+		      <th> </th><!--edit / yes -->
+		      <th> </th><!--remove / no -->
+		      <th> </th><!--  / MayBe-->
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="igo in igos" ng-class-even="'warning'" ng-class-odd="odd">
+		      <td>{{igo.user}}</td>
+		      <td>{{igo.place}}</td>
+		      <td>{{getDate(igo.date)}} - {{getTime(igo.date)}}</td>
+		      <td> </td><!--view -->
+		      <td> </td><!--edit / yes -->
+		      <td> </td><!--remove / no -->
+		      <td> </td><!--  / MayBe-->
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</div>
