@@ -8,4 +8,16 @@ angular.module('wemet.directives', []).
     return function(scope, elm, attrs) {
       elm.text(version);
     };
+  }]).
+  directive('compile', ['$compile', function ($compile) {
+  return function(scope, element, attrs) {
+    scope.$watch(
+      function(scope) {
+        return scope.$eval(attrs.compile);
+      },
+      function(value) {
+        element.html(value);
+        $compile(element.contents())(scope);
+      }
+   )};
   }]);

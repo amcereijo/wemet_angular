@@ -1,7 +1,7 @@
 <div ng-controller="IgoCtrl">
 	<h3>Meetups</h3>
 	<h3>
-		<a class="btn btn-default" href="#/coursenew" role="button">Add </a>
+		<a class="btn btn-default" href="/igo/new" role="button">Add </a>
 	</h3>
 	<p/>
 	<div class="table-responsive">
@@ -22,10 +22,10 @@
 		      <td>{{igo.user}}</td>
 		      <td>{{igo.place}}</td>
 		      <td>{{getDate(igo.date)}} - {{getTime(igo.date)}}</td>
-		      <td> </td><!--view -->
-		      <td> </td><!--edit / yes -->
-		      <td> </td><!--remove / no -->
-		      <td> </td><!--  / MayBe-->
+		      <td><a href="/igo/view"> View </a> </td><!--view -->
+		      <td class="js-resp" compile="igo | editOrYes"> </td><!--edit / yes -->
+		      <td class="js-resp" compile="igo | deleteOrNot"> </td><!--remove / no -->
+		      <td class="js-resp" compile="igo | nothingOrMayBe"> </td><!--  / MayBe-->
 		    </tr>
 		  </tbody>
 		</table>

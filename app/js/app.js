@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 var app = angular.module('wemet', [
   'ngRoute',
+  'ngSanitize',
   'wemet.filters',
   'wemet.services',
   'wemet.directives',
@@ -18,4 +19,5 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.run(function($rootScope) {
 	$rootScope.serviceUrl = 'http://localhost:3000/api';
+	$rootScope.user = '666666666';
 });
