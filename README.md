@@ -1,0 +1,1 @@
+# Front application to comsume wemet services
