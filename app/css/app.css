@@ -28,3 +28,24 @@
   content: "";
   padding: 0;
 }
+
+.igosContent {
+  width: 80%;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.igo-na {
+  background: rgb(231, 231, 231);
+}
+.igo-yes {
+  background: rgb(92, 184, 92);
+}
+
+.igo-no {
+  background: rgb(212, 63, 58);
+}
+
+.igo-myb {
+  background: rgb(240, 173, 78);
+}
