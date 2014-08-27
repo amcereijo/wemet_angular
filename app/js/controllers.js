@@ -9,8 +9,8 @@ controllers.controller('IndexCtrl', ['$scope', '$rootScope', function($scope, $r
 
 controllers.controller('IgoCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 	$scope.igos = [];
-	console.log('calling ' + $rootScope.serviceUrl+'/igo');
-	$http({method: 'GET', isArray: true, url: $rootScope.serviceUrl+'/igo'}).
+	var urlIgos = $rootScope.serviceUrl+'/igo/user/'+$rootScope.user;
+	$http({method: 'GET', isArray: true, url: urlIgos}).
 		success(function(data, status, headers, config) {
 			var i;
 			$scope.igos = data;
