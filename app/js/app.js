@@ -20,4 +20,9 @@ app.config(['$routeProvider', function($routeProvider) {
 app.run(function($rootScope) {
 	$rootScope.serviceUrl = 'http://localhost:3000/api';
 	$rootScope.user = '653604333';
+	$rootScope.responses = {
+		yes: 'yes',
+		no: 'no',
+		maybe: 'maybe'
+	}
 });

@@ -19,7 +19,7 @@ angular.module('wemet.filters', []).
   	return function(igo) {
   		var classes = 'btn btn-success glyphicon glyphicon-thumbs-up ', 
   			content = (igo.user === $rootScope.user) ? '<a ng-href="#/edit">Edit</a>' : 
-  				getButtonContent(igo.resp, 'yes', classes);
+  				getButtonContent(igo.resp, $rootScope.responses.yes, classes);
   		return content;
   	};
   }])
@@ -27,14 +27,14 @@ angular.module('wemet.filters', []).
   	return function(igo) {
   		var classes = 'btn btn-danger glyphicon glyphicon-thumbs-down ',
   			content = (igo.user === $rootScope.user) ? '<a ng-href="#/delete">Delete</a>' :
-  				getButtonContent(igo.resp, 'no', classes);
+  				getButtonContent(igo.resp, $rootScope.responses.no, classes);
   		return content;
   	};
   }])
   .filter('nothingOrMayBe', ['$rootScope', function($rootScope) {
   	return function(igo) {
   		var classes = 'btn btn-warning glyphicon glyphicon-question-sign ',
-  		content = (igo.user === $rootScope.user) ? '':getButtonContent(igo.resp, 'maybe', classes);
+  		content = (igo.user === $rootScope.user) ? '':getButtonContent(igo.resp, $rootScope.responses.maybe, classes);
   		return content;
   	};
   }]);
