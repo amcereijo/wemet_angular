@@ -30,15 +30,18 @@ function($scope, IgosFactory) {
 		var datetime = new Date(date);
 		return datetime.getHours() + ':' + datetime.getMinutes();
 	};
-	$scope.setResp = function($event, resp) {
+	$scope.setResp = function($event, resp, igo) {
 		var target = angular.element($event.target),
 			td = target.parent(),
 			tr = td.parent();
+			console.log('igo:'+ igo.resp);
+		igo.resp = resp;
+		//call http
 		tr.removeClass('igo-yes').removeClass('igo-no').removeClass('igo-myb');
 		switch(resp) {
 			case 'yes': tr.addClass('igo-yes'); break;
 			case 'no': tr.addClass('igo-no'); break;
-			case 'myb': tr.addClass('igo-myb'); break;
+			case 'maybe': tr.addClass('igo-myb'); break;
 		}
 	};
 }]);

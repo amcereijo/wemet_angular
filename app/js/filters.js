@@ -13,7 +13,12 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "<a href=\"/edit\">Edit</a>";
   		}else {
-  			return "<button type=\"button\" ng-click=\"setResp($event, 'yes')\" class=\"btn btn-success\"> Yes </button>";
+  			if(igo.resp != 'yes') {
+  				return "<button type=\"button\" ng-click=\"setResp($event, 'yes', igo)\" class=\"btn btn-success\"> Yes </button>";	
+  			} else {
+  				return ''
+  			}
+  			
   		}
   	};
   }])
@@ -22,7 +27,11 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "<a href=\"/delete\">Delete</a>";
   		}else {
-  			return "<button type=\"button\" ng-click=\"setResp($event,'no')\" class=\"btn btn-danger\"> No </button>";
+  			if(igo.resp != 'no') {
+  				return "<button ng-show=\"{{igo.resp!='no'}}\" type=\"button\" ng-click=\"setResp($event,'no', igo)\" class=\"btn btn-danger\"> No </button>";
+  			} else {
+  				return '';
+  			}
   		}
   	};
   }])
@@ -31,7 +40,11 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "";
   		}else {
-  			return "<button type=\"button\" ng-click=\"setResp($event, 'myb')\" class=\"btn btn-warning\"> ? </button>";
+  			if(igo.resp != 'maybe') {
+  				return "<button type=\"button\" ng-click=\"setResp($event, 'maybe', igo)\" class=\"btn btn-warning\"> ? </button>";
+  			} else {
+  				return '';
+  			}
   		}
   	};
   }]);
