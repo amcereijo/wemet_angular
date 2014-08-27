@@ -29,14 +29,14 @@ controllers.controller('IgoCtrl', ['$scope', '$http', '$rootScope', function($sc
 		return datetime.getHours() + ':' + datetime.getMinutes();
 	};
 	$scope.setResp = function($event, resp) {
-		debugger;
 		var target = angular.element($event.target),
 			td = target.parent(),
 			tr = td.parent();
+		tr.removeClass('igo-yes').removeClass('igo-no').removeClass('igo-myb');
 		switch(resp) {
-			case 'yes': tr.css('background', 'green');  break;
-			case 'no': tr.css('background', 'red');  break;
-			case 'myb': tr.css('background', 'yellow');  break;
+			case 'yes': tr.addClass('igo-yes'); break;
+			case 'no': tr.addClass('igo-no'); break;
+			case 'myb': tr.addClass('igo-myb'); break;
 		}
 	};
 }]);
