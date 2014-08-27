@@ -2,22 +2,24 @@
 
 /* Controllers */
 
-var controllers = angular.module('wemet.controllers', []);
+var controllers = angular.module('wemet.controllers', ['wemet.services']);
 
-controllers.controller('IndexCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+controllers.controller('IndexCtrl', ['$scope', function($scop) {
 }]);
 
-controllers.controller('IgoCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+controllers.controller('IgoCtrl', ['$scope', 'IgosFactory',  
+function($scope, IgosFactory) {
 	$scope.igos = [];
-	var urlIgos = $rootScope.serviceUrl+'/igo/user/'+$rootScope.user;
-	$http({method: 'GET', isArray: true, url: urlIgos}).
-		success(function(data, status, headers, config) {
-			var i;
-			$scope.igos = data;
-		}).
-		error(function(data, status, headers, config) {
-			alert('error: '+data);
-		});
+	IgosFactory.getIgos().query().$promise.then(
+			function(data, status, headers, config) {
+				$scope.igos = data;
+				console.log(data+", "+ status+", "+ headers+", "+ config);
+			}, 
+			function(data, status, headers, config) {
+				alert('error: '+data);
+			}
+		);
+
 	$scope.getDate = function(date) {
 		var datetime = new Date(date);
 		//TODO change date formatw
