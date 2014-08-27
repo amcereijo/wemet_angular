@@ -13,7 +13,7 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "<a href=\"/edit\">Edit</a>";
   		}else {
-  			return "<span ng-click=\"setResp($event, 'yes')\"> Yes </span>";
+  			return "<button type=\"button\" ng-click=\"setResp($event, 'yes')\" class=\"btn btn-success\"> Yes </button>";
   		}
   	};
   }])
@@ -22,7 +22,7 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "<a href=\"/delete\">Delete</a>";
   		}else {
-  			return "<span ng-click=\"setResp($event,'no')\"> No </span>";
+  			return "<button type=\"button\" ng-click=\"setResp($event,'no')\" class=\"btn btn-danger\"> No </button>";
   		}
   	};
   }])
@@ -31,7 +31,7 @@ angular.module('wemet.filters', []).
   		if(igo.user === $rootScope.user) {
   			return "";
   		}else {
-  			return "<span ng-click=\"setResp($event, 'myb')\"> MayBe </span>";
+  			return "<button type=\"button\" ng-click=\"setResp($event, 'myb')\" class=\"btn btn-warning\"> ? </button>";
   		}
   	};
   }]);
