@@ -2,6 +2,13 @@
 
 /* Filters */
 
+var getButtonContent = function(igoResp, response, classes) {  
+	if (igoResp === response) { //option selected
+  		classes += 'disabled';
+  	}
+	return '<button type="button" ng-click="setResp(\''+response+'\', igo)" class="'+classes+'"></button>';
+};
+
 angular.module('wemet.filters', []).
   filter('interpolate', ['version', function(version) {
     return function(text) {
@@ -10,42 +17,24 @@ angular.module('wemet.filters', []).
   }])
   .filter('editOrYes', ['$rootScope', function($rootScope) {
   	return function(igo) {
-  		if(igo.user === $rootScope.user) {
-  			return "<a ng-href=\"/edit\">Edit</a>";
-  		}else {
-  			if(igo.resp === 'yes') {
-  				return "<button type=\"button\" ng-click=\"setResp('yes', igo)\" class=\"btn btn-success disabled glyphicon glyphicon-thumbs-up\"></button>";
-  			} else {
-  				return "<button type=\"button\" ng-click=\"setResp('yes', igo)\" class=\"btn btn-success glyphicon glyphicon-thumbs-up\"></button>";
-  			}
-  			
-  		}
+  		var classes = 'btn btn-success glyphicon glyphicon-thumbs-up ', 
+  			content = (igo.user === $rootScope.user) ? '<a ng-href="#/edit">Edit</a>' : 
+  				getButtonContent(igo.resp, 'yes', classes);
+  		return content;
   	};
   }])
   .filter('deleteOrNot', ['$rootScope', function($rootScope) {
   	return function(igo) {
-  		debugger;
-  		if(igo.user === $rootScope.user) {
-  			return "<a ng-href=\"/delete\">Delete</a>";
-  		}else {
-  			if(igo.resp === 'no') {
-  				return "<button type=\"button\" ng-click=\"setResp('no', igo)\" class=\"btn btn-danger disabled glyphicon glyphicon-thumbs-down\"></button>";
-  			} else {
-  				return "<button type=\"button\" ng-click=\"setResp('no', igo)\" class=\"btn btn-danger glyphicon glyphicon-thumbs-down\"></button>";
-  			}
-  		}
+  		var classes = 'btn btn-danger glyphicon glyphicon-thumbs-down ',
+  			content = (igo.user === $rootScope.user) ? '<a ng-href="#/delete">Delete</a>' :
+  				getButtonContent(igo.resp, 'no', classes);
+  		return content;
   	};
   }])
   .filter('nothingOrMayBe', ['$rootScope', function($rootScope) {
   	return function(igo) {
-  		if(igo.user === $rootScope.user) {
-  			return "";
-  		}else {
-  			if(igo.resp === 'maybe') {
-  				return "<button type=\"button\" ng-click=\"setResp('maybe', igo)\" class=\"btn btn-warning disabled glyphicon glyphicon-question-sign\"></button>";
-  			} else {
-  				return "<button type=\"button\" ng-click=\"setResp('maybe', igo)\" class=\"btn btn-warning glyphicon glyphicon-question-sign\"></button>";
-  			}
-  		}
+  		var classes = 'btn btn-warning glyphicon glyphicon-question-sign ',
+  		content = (igo.user === $rootScope.user) ? '':getButtonContent(igo.resp, 'maybe', classes);
+  		return content;
   	};
   }]);
